@@ -1,5 +1,8 @@
 package com.linktern.Models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,19 +12,27 @@ public class User {
 	private String SecondName;
 	private String LastName;
 	private String FullName;
-	private String Email;
-	private String Password;
-	private String MobileNumber;
-	private String Address;
-	private String Company;
-	private String Role;
-	
-	
 	public String getFullName() {
 		return FullName;
 	}
 	public void setFullName(String fullName) {
 		FullName = fullName;
+	}
+	private String Email;
+	@Min(value = 2 , message = "You must insert password")
+	private String Password;
+	private String MobileNumber;
+	private String Address;
+	private String Company;
+	private String Role;
+	private int RoleId;
+	
+	
+	public int getRoleId() {
+		return RoleId;
+	}
+	public void setRoleId(int roleId) {
+		RoleId = roleId;
 	}
 	public String getAddress() {
 		return Address;

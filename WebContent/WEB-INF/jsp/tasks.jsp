@@ -8,7 +8,12 @@
 
 <t:layout>
 <div class="text-right">
-	    <a class = "btn btn-primary" href="createtask">Create Task</a>
+		<c:choose>
+			<c:when test="${role == 'Student' }">
+				<a class = "btn btn-primary" href="createtask">Create Task</a>
+			</c:when>
+		</c:choose>
+	    
 	</div>
 	<div class="bd-example table-responsive">
 	    <table class="table">
@@ -52,6 +57,7 @@
 						<c:choose>
 						    <c:when test="${role == 'Student'}">
 						        <td><a class = "btn btn-primary" href="viewtask/${task.getTask_id() }">Edit Task</a></td>
+						        <td><a class = "btn btn-primary" href="deletetask/${task.getTask_id() }">Delete</a></td>
 						    </c:when>
 						</c:choose>
 						

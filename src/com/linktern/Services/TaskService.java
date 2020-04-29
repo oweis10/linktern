@@ -50,8 +50,8 @@ class TaskService implements ITaskService{
 	}
 
 	@Override
-	public void EditTask(Task task) {
-		taskRepository.EditTask(task);
+	public void EditTask(Task task, int status) {
+		taskRepository.EditTask(task, status);
 		
 	}
 
@@ -65,6 +65,12 @@ class TaskService implements ITaskService{
 	public void AddComment(int taskId, int userId, String comment) {
 		// TODO Auto-generated method stub
 		taskRepository.AddComment(taskId, userId, comment);
+	}
+
+	@Override
+	public void DeleteTask(int taskId) {
+		taskRepository.DeleteTask(taskId);
+		
 	}
 
 }

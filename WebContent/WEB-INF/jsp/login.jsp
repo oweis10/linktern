@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="loginForm"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +28,7 @@
 	<%@include file="/wwwroot/css/logIn.css" %>
 	</style>
 </head>
+
 <body>
 <div class="row no-gutter">
         <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
@@ -33,20 +37,28 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-lg-8 mx-auto">
-                        	<h5><font class="danger"> ${invalid} </font></h5>
+                        	<h5><font class="text-danger"> ${invalid} </font></h5>
                             <h3 class="login-heading mb-4 text-center">LinkTern</h3>
-                            <loginForm:form action="loginrequest" method="post" modelAttribute="user">
+                            <loginForm:form action="${contextPath}/loginrequest" method="post" modelAttribute="user">
                                 <div class="form-label-group">
-                                    <loginForm:input placeholder="Enter email" path="Email" type="email" class="form-control"/>
+                                    <loginForm:input placeholder="Enter email"  required = "true" path="Email" type="email" class="form-control"/>
                                     
                                     <span class="text-danger"></span>
                                 </div>
 
                                 <div class="form-label-group">
                                     <loginForm:input path="password" placeholder="Enter password" type="Password" class="form-control"/>
-                                    
-                                    <span class="text-danger"></span>
+                                    <span class="text-danger">
+                                    	<spring:hasBindErrors name="user">
+											<c:forEach var="error" items="${errors.allErrors}">
+												<b><spring:message message="${error}" /></b>
+												<br />
+											</c:forEach>
+									    </spring:hasBindErrors>
+                                    </span>
                                 </div>
+                                
+                                <loginForm:errors class="text-danger" path="*"><span></span></loginForm:errors>
 
 <!--                                 <div class="custom-control custom-checkbox mb-3"> -->
 <!--                                     <input type="checkbox" class="custom-control-input"> -->

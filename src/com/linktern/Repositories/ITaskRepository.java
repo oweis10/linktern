@@ -12,7 +12,8 @@ public interface ITaskRepository {
 	public ArrayList<Task> GetStudentTasks(int userId);
 	public void CreateNewTask(Task task);
 	public Task GetTask(int taskId);
-	public void EditTask(Task task);
+	public void EditTask(Task task, int status);
 	public ArrayList<Comment> GetTaskComments(int taskId);
 	public void AddComment(int taskId, int userId, String comment);
+	public void DeleteTask(int taskId);
 }

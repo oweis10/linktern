@@ -55,6 +55,9 @@
                              <c:choose>
                         <c:when test="${role == 'School Mentor' }">
                         <li class="nav-item">
+							    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="${contextPath}/schoolmentorstudents">Students</a>
+							</li>
+                        <li class="nav-item">
 							    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="${contextPath}/schoolmentortasks">Tasks</a>
 							</li>
 						</c:when>
@@ -62,16 +65,16 @@
                         
                             <c:choose>
                         <c:when test="${role == 'Work Mentor' }">
-                        <li class="nav-item">
+                        	<li class="nav-item">
+							    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="${contextPath}/workmentorstudents">Students</a>
+							</li>
+                        	<li class="nav-item">
 							    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="${contextPath}/workmentortasks">Tasks</a>
 							</li>
 						</c:when>
                         </c:choose>
                         <!-- (String)session.getAttribute('userRole') -->
                        <c:choose>
-                       
-
-                       
                        		<c:when test="${role == 'Admin' }">
                        		
 							<li class="nav-item">
@@ -97,12 +100,10 @@
 					              ${name} <i class="fas fa-cog" style="margin-right:2px;"></i>
 					         </a>
 					         <div class="dropdown-menu" style="background-color: #2c3e50 !important;" aria-labelledby="navbarDropdown">
-					             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-lowercase" title="Manage">
-					                 Profile
-					             </a>
+					             
 					             <form class="form-inline">                 
-					                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-lowercase" style="cursor: pointer;" onclick="document.getElementById('logOut').submit();" title="Manage">
-					                     Logout
+					                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-lowercase" style="cursor: pointer;" href="${contextPath}/logout" title="Manage">
+					                     Logout 
 					                 </a>   
 					             </form>
 					         </div>
@@ -112,14 +113,14 @@
             </div>
         </nav>
     <c:choose>
-    	<c:when test="${url == 'home' }">
+    	<c:when test="${requestScope['javax.servlet.forward.request_uri'] == '/Link-Tern/loginrequest' or  requestScope['javax.servlet.forward.request_uri'] == '/Link-Tern/home'}">
 				<jsp:doBody/>
     	</c:when>
-    	<c:otherwise>
+    	<c:when test="${requestScope['javax.servlet.forward.request_uri'] != '/Link-Tern/loginrequest' or  requestScope['javax.servlet.forward.request_uri'] != '/Link-Tern/home'}">
     		<div class="container" style="padding-top : 10rem; min-height: 30rem !Important;">
 				<jsp:doBody/>
 		    </div>
-    	</c:otherwise>
+    	</c:when>
     </c:choose>
     
         <!-- Footer -->

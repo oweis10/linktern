@@ -59,7 +59,7 @@
 				</div>
 				<div class="col-md-6 text-center">
 					<h3 class="text-secondary">Task's Objective</h3>
-					<iframe id="ifrm" src="resume.pdf"
+					<iframe id="ifrm" src=""
 						style="width: 30em; height: 25em;"></iframe>
 				</div>
 			</div>

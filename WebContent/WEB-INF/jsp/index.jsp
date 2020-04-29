@@ -14,7 +14,7 @@
     <div class="container d-flex align-items-center flex-column">
 
         <!-- Masthead Avatar Image -->
-        <img class="masthead-avatar mb-5" src="~/img/logo.png" alt="">
+        <img class="masthead-avatar mb-5" src="${pageContext.request.contextPath}/wwwroot/img/logo.png" alt="">
 
         <!-- Masthead Heading -->
         <h1 class="masthead-heading text-uppercase mb-0">LinkTern</h1>
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="/wwwroot/img/team/1.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="${pageContext.request.contextPath}/wwwroot/img/team/linkternlina.jpg" alt="">
                     <h4>Lina Sabbahin</h4>
                     <p class="text-muted">Database Administrator</p>
                     <ul class="list-inline social-buttons">
@@ -67,7 +67,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="/wwwroot/img/team/linkternkhaled.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="${pageContext.request.contextPath}/wwwroot/img/team/linkternkhaled.jpg" alt="">
                     <h4>Khaled Oweis</h4>
                     <p class="text-muted">Software Engineer</p>
                     <ul class="list-inline social-buttons">
@@ -91,7 +91,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="/wwwroot/img/team/linkternyogita.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="${pageContext.request.contextPath}/wwwroot/img/team/linkternyogit.jpg" alt="">
                     <h4>Yogita Chittoria</h4>
                     <p class="text-muted">Team Leader</p>
                     <ul class="list-inline social-buttons">

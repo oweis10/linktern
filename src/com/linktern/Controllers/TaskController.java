@@ -102,7 +102,7 @@ public class TaskController {
 	@RequestMapping(value = "edittask", method=RequestMethod.POST)
 	public ModelAndView EditPlacement(@ModelAttribute("task") Task task, HttpSession session)
 	{
-		taskService.EditTask(task);
+		taskService.EditTask(task, 1);
 		int userId=(int) session.getAttribute("id");
 		ArrayList<Task> tasks = taskService.GetStudentTasks(userId);
 		return new ModelAndView("tasks","tasks", tasks);
@@ -132,7 +132,7 @@ public class TaskController {
 		Task task = taskService.GetTask(id);
 		task.setRejection_note(note);
 		task.setTask_status(3);
-		taskService.EditTask(task);
+		taskService.EditTask(task, 3);
 		ArrayList<Task> tasks = taskService.GetWorkMentorTasks(userId);
 		return new ModelAndView("tasks","tasks", tasks);
 	}
@@ -153,8 +153,18 @@ public class TaskController {
 		int studentId=(int) session.getAttribute("id");
 		model.addAttribute("taskDate", date.toString());
 		
-		ArrayList<Task> tasks = taskService.GetStudentTasks(studentId);
+		ArrayList<Task> tasks = taskService.GetStudentTasks(id);
 		model.addAttribute("tasks",tasks);
 		return new ModelAndView("timeline","taskss", tasks);
 	}
+	
+	@RequestMapping(value = "/deletetask/{id}", method=RequestMethod.GET)
+	public ModelAndView DeletePlacement(@PathVariable("id") int id, HttpSession session)
+	{
+		taskService.DeleteTask(id);
+		int userId=(int) session.getAttribute("id");
+		ArrayList<Task> tasks = taskService.GetStudentTasks(userId);
+		return new ModelAndView("tasks","tasks", tasks);
+	}
+	
 }

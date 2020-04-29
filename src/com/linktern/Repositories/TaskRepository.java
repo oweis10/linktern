@@ -313,7 +313,7 @@ try {
 		return task;
 	}
 	
-	public void EditTask(Task task) {
+	public void EditTask(Task task, int status) {
 		Connection con = dbc.getConnection();
 		String updateSql = "call update_task(?,?,?,?,?,?)";
 		
@@ -325,7 +325,7 @@ try {
 			pr.setInt(1, task.getObjective_id());
 			pr.setString(2, task.getTask_title());
 			pr.setString(3,task.getTask_description());
-			pr.setInt(4,task.getTask_status());
+			pr.setInt(4,status);
 			pr.setString(5,task.getRejection_note());
 			pr.setInt(6,task.getTask_id());
 			
@@ -389,6 +389,28 @@ try {
 			pr.setString(3, comment);
 			
 			pr.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			dbc.closeConnection(con);
+		}
+		
+	}
+	
+	public void DeleteTask(int taskId) {
+		Connection con = dbc.getConnection();
+		String deleteComments = "DELETE FROM task_comments where task_id = "+ taskId;
+		String deleteTask = "DELETE FROM tasks where task_id = "+ taskId;
+		
+		try {
+			
+			Statement stm = con.createStatement();
+			stm.executeUpdate(deleteComments);
+			stm.executeUpdate(deleteTask);
 			
 		} catch (SQLException e) {
 			
